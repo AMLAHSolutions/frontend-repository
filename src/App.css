@@ -1,54 +1,59 @@
 /* src/App.css */
+.App {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh; /* Full viewport height */
-  background-image: url('https://347bf18f4f8052494db551d63557b3a3.cdn.bubble.io/f1721343208207x990716795850215400/0007-007%20copy.jpg'); /* Set background image */
-  background-size: cover; /* Ensure the image covers the entire background */
-  background-position: center; /* Center the background image */
   margin-bottom: 0px;
 }
 
+.main-search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 95vh; /* Adjust height to fit the search bar */
+  background-image: url('https://347bf18f4f8052494db551d63557b3a3.cdn.bubble.io/f1721343208207x990716795850215400/0007-007%20copy.jpg'); /* Set background image for search bar */
+  background-size: cover;
+  background-position: center;
+}
+
 .page-title {
-  color: white; /* Set the title text color to black */
-  margin-bottom: 10px; /* Adjust spacing for better layout */
-  font-size: 24px; /* Adjust the font size */
+  color: white; /* Set the title text color */
+  font-size: 2.5rem; /* Adjust the font size */
   font-weight: bold; /* Make the title bold */
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8); /* Optional: add a shadow for better visibility */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); /* Add a shadow for visibility */
+  margin-bottom: 10px; /* Adjust spacing for better layout */
 }
 
 .subtext {
-  color: white; /* Set the subtext color to black */
+  color: white; /* Set the subtext color */
+  font-size: 1.2rem; /* Adjust the font size */
   margin-bottom: 20px; /* Add some spacing below the subtext */
-  font-size: 16px; /* Adjust the font size */
   text-align: center; /* Center the text */
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8); /* Optional: add a shadow for better visibility */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); /* Add a shadow for better visibility */
 }
 
+/* Updated SearchBar */
 .search-bar {
   text-align: center;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  background-color: rgba(255, 255, 255, 0.9); /* Slight transparency for the white background */
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for better visual */
-}
-
-.option-buttons button {
-  margin-right: 10px;
-  padding: 8px 16px;
-  cursor: pointer;
-}
-
-.option-buttons .active {
-  background-color: #4CAF50;
-  color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for visual */
+  margin-top: 20px; /* Add space between the search bar and the title */
 }
 
 .search-bar select, .search-bar input {
   margin: 10px 0;
-  padding: 8px;
+  padding: 10px;
   width: 200px;
 }
 
@@ -60,6 +65,19 @@
   cursor: pointer;
 }
 
+/* Option buttons for Buy/Rent */
+.option-buttons button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.option-buttons .active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Footer section */
 .footer {
   text-align: center;
   bottom: 0;
@@ -69,6 +87,7 @@
   background-size: cover;
   color: white;
 }
+
 .subscription-container {
   display: flex;
   align-items: center;
@@ -144,4 +163,36 @@
 .privacy-coookies-terms {
   margin-top: 20px;
   margin-bottom: 100px;
+}
+
+/* Ensure the map, metrics banner, and footer have their own separate backgrounds */
+.GoogleMapComponent, .MetricsBanner, .Footer {
+  background-color: #f5f5f5; /* or another background for these sections */
+}
+
+/* Metrics banner */
+.metrics-banner {
+  background-color: #b2e0f9; /* Light blue background */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 40px;
+  margin: 0; /* Removed space to eliminate gaps */
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Individual metric */
+.metric {
+  flex: 1;
+}
+
+.metric h2 {
+  font-size: 32px; /* Larger font for numbers */
+  margin: 0;
+}
+
+.metric p {
+  font-size: 18px; /* Smaller font for description */
+  color: #333;
 }
