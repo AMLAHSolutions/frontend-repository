@@ -196,3 +196,74 @@
   font-size: 18px; /* Smaller font for description */
   color: #333;
 }
+
+/* -------- Header styles integration -------- */
+
+/* Header styles */
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1000; /* Ensure the header stays above other elements */
+  background-color: transparent; /* Remove background color */
+}
+
+.header-container {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  position: absolute; /* Position the header relative to the main content */
+  top: 20px; /* Adjust the positioning to appear nicely over the background image */
+  left: 0;
+  right: 0;
+}
+
+/* Logo */
+.logo {
+  margin-left: 200px; /* Move the logo a bit to the right from the left margin */
+}
+
+.logo img {
+  width: 100px; /* Adjust this to the size of your logo */
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  margin-left: 40px; /* Adjust the space between the logo and navigation */
+}
+
+/* Navigation Links */
+.nav-links a {
+  margin: 0 15px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: white; /* White text to contrast with the background image */
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Log In */
+.login {
+  display: flex;
+  margin-left: 20px;
+}
+
+.user-icon {
+  font-size: 1.5rem;
+  color: white; /* White icon to contrast with the background */
+  margin-right: 8px;
+}
+
+.login a {
+  text-decoration: none;
+  color: white; /* White text for log in */
+  font-size: 1.2rem;
+  font-weight: 500;
+}
