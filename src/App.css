@@ -54,11 +54,44 @@
 .search-bar select, .search-bar input {
   margin: 10px 0;
   padding: 10px;
-  width: 200px;
+  width: 200px; /* Adjust width as needed for alignment and responsiveness */
+}
+
+.search-bar select {
+  appearance: none; /* Removes default styling of dropdown */
+  background-image: url('https://cdn-icons-png.flaticon.com/512/25/25694.png'); /* Adds a house icon */
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Positions the icon on the right */
+  background-size: 20px; /* Sizes the icon appropriately */
+  padding-right: 40px; /* Adds padding to prevent text from hiding under the icon */
 }
 
 .search-bar button {
   padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.price-slider {
+  position: absolute;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.price-slider input[type="range"] {
+  width: 80%;
+  margin: 10px;
+}
+
+.price-slider button {
+  padding: 5px 10px;
   background-color: #4CAF50;
   color: white;
   border: none;
@@ -70,11 +103,14 @@
   margin-right: 10px;
   padding: 8px 16px;
   cursor: pointer;
+  background-color: white; /* Default background */
+  color: black; /* Default text color */
+  border: 2px solid #4CAF50; /* Green border */
 }
 
 .option-buttons .active {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #4CAF50; /* Active background */
+  color: white; /* Active text color */
 }
 
 /* Footer section */
@@ -252,18 +288,192 @@
 /* Log In */
 .login {
   display: flex;
+  align-items: center;
   margin-left: 20px;
 }
 
 .user-icon {
   font-size: 1.5rem;
-  color: white; /* White icon to contrast with the background */
+  color: white; /* Change icon color to match "Log In" link */
   margin-right: 8px;
 }
 
+/* Log In button styling */
 .login a {
-  text-decoration: none;
-  color: white; /* White text for log in */
+  background-color: transparent; /* Remove background */
+  color: white; /* Match the color to the navigation links */
+  border: none; /* Remove border */
+  padding: 0; /* Remove padding */
   font-size: 1.2rem;
   font-weight: 500;
+  text-decoration: none; /* Remove default link underline */
+  cursor: pointer;
+}
+
+.login a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal content */
+.modal-content {
+  display: flex;
+  width: 80%; /* Increase width to fill more space */
+  height: 70%; /* Set height to create a larger square shape */
+  max-width: 1000px; /* Optional: Increase max-width for larger screens */
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Left-side content (welcome section) */
+.login-modal-left {
+  flex: 1;
+  background-color: #204052; /* Adjust color to match the screenshot */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Logo styling */
+.modal-logo {
+  width: 100px; /* Adjust size as needed */
+  height: auto;
+  margin-bottom: 70px; /* Space between logo and Welcome Back text */
+}
+
+/* Centered welcome-back section */
+.welcome-back {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.welcome-back h2 {
+  margin-bottom: 10px;
+}
+
+.welcome-back p {
+  max-width: 300px; /* Control the width to encourage line breaks */
+  margin-top: 10px;
+  line-height: 1.5; /* Adjust spacing between lines */
+  font-size: 1rem; /* Adjust font size if needed */
+}
+
+.signup-button {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+/* Right-side content (login form and social login) */
+.login-modal-right {
+  flex: 1;
+  padding: 40px 20px; /* Adjust padding as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space out elements from top to bottom */
+}
+
+.login-modal-right h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between form elements */
+}
+
+input[type="email"],
+input[type="password"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Login options (checkbox and forgot password link) */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+/* Style for Forgot Password and Sign Up Now links */
+.login-options a,
+.login-modal-right p a {
+  color: #1fa2a3; /* Match the login button color */
+  text-decoration: none; /* Remove underline */
+  cursor: pointer;
+}
+
+.login-options a:hover,
+.login-modal-right p a:hover {
+  text-decoration: underline; /* Optional: underline on hover */
+}
+
+/* Login button styling */
+.login-button {
+  padding: 10px;
+  background-color: #1fa2a3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Social icons styling */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.social-icons .icon {
+  font-size: 20px;
+  color: #444;
+  cursor: pointer;
+}
+
+/* Bottom text styling */
+.login-modal-right p {
+  text-align: center;
+  margin-top: 20px; /* Add spacing above "Not a member yet?" */
+}
+
+/* Close button styling */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1; /* Ensure it appears above other content */
 }
