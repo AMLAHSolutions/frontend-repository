@@ -257,6 +257,22 @@
   right: 0;
 }
 
+/* Header styles for the Results Page */
+.results-header {
+  margin-bottom: 0px; /* Add space below the header */
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px; /* Push the Header down from the top */
+  margin-bottom: 0px; /* Maintain the space below the Header */
+}
+
+/* Adjust the Header container positioning specifically for Results Page */
+.header-container.results-page {
+  position: relative; /* Allow stacking of elements without overlap */
+  top: 0; /* Reset top position to avoid absolute offset */
+  padding-bottom: 0px;
+}
+
 /* Logo */
 .logo {
   margin-left: 200px; /* Move the logo a bit to the right from the left margin */
@@ -277,8 +293,12 @@
   margin: 0 15px;
   text-decoration: none;
   font-size: 1.2rem;
-  color: white; /* White text to contrast with the background image */
+  color: white; /* Default white for the main page */
   font-weight: 500;
+}
+
+.nav-links a.results-page {
+  color: black; /* Black for the Results Page */
 }
 
 .nav-links a:hover {

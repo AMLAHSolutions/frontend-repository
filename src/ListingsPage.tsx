@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import Header from './Header';
 
 const ListingsPage: React.FC = () => {
   const location = useLocation();
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -11,20 +12,20 @@ const ListingsPage: React.FC = () => {
     const fetchData = async () => {
       setIsLoading(true);
       setError(null);
-      const queryParams = new URLSearchParams(location.search);
+
       try {
-        const response = await fetch(`http://localhost:5000/houses/search?${queryParams}`);
+        const response = await fetch(`http://127.0.0.1:5000/houses/search${location.search}`);
         if (!response.ok) {
           const errorResponse = await response.json();
           throw new Error(errorResponse.message || 'Failed to fetch data from the server.');
         }
-        const jsonData = await response.json();
-        setData(jsonData.data); // Backend returns data in a "data" field
+        const result = await response.json();
+        setData(result);
       } catch (err: any) {
-        setError(err.message || 'An unknown error occurred.');
-        setData([]);
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
       }
-      setIsLoading(false);
     };
 
     fetchData();
@@ -32,24 +33,20 @@ const ListingsPage: React.FC = () => {
 
   return (
     <div>
-      <h1>Search Listings</h1>
+      {/* Header always displayed at the top */}
+      <Header />
+      <h1>Search Results</h1>
       {isLoading ? (
         <p>Loading...</p>
       ) : error ? (
         <p style={{ color: 'red' }}>{error}</p>
-      ) : data.length > 0 ? (
-        data.map((item) => (
-          <div key={item.house_id}>
-            <p>
-              <strong>Address:</strong> {item.street}, {item.city}
-            </p>
-            <p>
-              <strong>Price:</strong> {item.price || item.monthly_price}
-            </p>
-          </div>
-        ))
       ) : (
-        <p>No listings found.</p>
+        <div>
+          <h2>Response Data:</h2>
+          <pre style={{ background: '#f4f4f4', padding: '10px', borderRadius: '5px' }}>
+            {JSON.stringify(data, null, 2)}
+          </pre>
+        </div>
       )}
     </div>
   );

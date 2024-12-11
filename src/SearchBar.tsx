@@ -33,22 +33,18 @@ const SearchBar: React.FC = () => {
   };
 
   const handleSearch = () => {
-    // Ensure the type is mapped to the expected backend values
-    const type = filters.option === 'buy' ? 'for_sale' : 'rental'; // "for_sale" or "rental"
-    
-    // Construct the URLSearchParams object for the query parameters
+    const type = filters.option === 'buy' ? 'for_sale' : 'rental';
     const params = new URLSearchParams({
-      type, // rental or for_sale
-      ...(filters.propertyType && { property_type: filters.propertyType }), // If property type is selected
-      ...(filters.city && { city: filters.city.replace(/ /g, "%20") }), // Ensure spaces are encoded as %20
-      ...(filters.priceMin > 0 && { price_min: filters.priceMin.toString() }), // Min price filter
-      ...(filters.priceMax < 1000000 && { price_max: filters.priceMax.toString() }), // Max price filter
+      type,
+      ...(filters.propertyType && { property_type: filters.propertyType }),
+      ...(filters.city && { city: filters.city }),
+      ...(filters.priceMin > 0 && { price_min: filters.priceMin.toString() }),
+      ...(filters.priceMax < 1000000 && { price_max: filters.priceMax.toString() }),
     });
-  
-    // Redirect to the correct route using navigate with the updated URL
-    navigate(`/houses/search?${params.toString()}`);
+
+    // Navigate to the results page with the constructed query parameters
+    navigate(`/results?${params.toString()}`);
   };
-  
 
   return (
     <div className="search-bar">
