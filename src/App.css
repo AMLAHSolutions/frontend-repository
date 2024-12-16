@@ -497,3 +497,17 @@ input[type="password"] {
   cursor: pointer;
   z-index: 1; /* Ensure it appears above other content */
 }
+
+/* Card Grid Styling */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* Space between cards */
+  gap: 20px; /* Consistent spacing between cards */
+  padding: 20px; /* Padding around the entire grid */
+}
+
+.card-grid .card .stars {
+  margin: 5px 0;
+  text-align: left;
+}

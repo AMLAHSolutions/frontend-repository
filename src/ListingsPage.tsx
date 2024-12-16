@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from './Header';
+import ListingsCards from './ListingsCards'; // Import the new component
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap styles
 
 const ListingsPage: React.FC = () => {
   const location = useLocation();
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -20,7 +22,7 @@ const ListingsPage: React.FC = () => {
           throw new Error(errorResponse.message || 'Failed to fetch data from the server.');
         }
         const result = await response.json();
-        setData(result);
+        setData(result.data || []);
       } catch (err: any) {
         setError(err.message);
       } finally {
@@ -33,21 +35,19 @@ const ListingsPage: React.FC = () => {
 
   return (
     <div>
-      {/* Header always displayed at the top */}
       <Header />
-      <h1>Search Results</h1>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p style={{ color: 'red' }}>{error}</p>
-      ) : (
-        <div>
-          <h2>Response Data:</h2>
-          <pre style={{ background: '#f4f4f4', padding: '10px', borderRadius: '5px' }}>
-            {JSON.stringify(data, null, 2)}
-          </pre>
-        </div>
-      )}
+      <div className="results-container">
+        <h1>Search Results</h1>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p style={{ color: 'red' }}>{error}</p>
+        ) : data.length > 0 ? (
+          <ListingsCards properties={data} />
+        ) : (
+          <p>No properties found matching your criteria.</p>
+        )}
+      </div>
     </div>
   );
 };
